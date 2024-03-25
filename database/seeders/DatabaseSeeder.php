@@ -13,11 +13,16 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // \App\Models\User::factory(10)->create();
-
+        // Creo un utente
         \App\Models\User::factory()->create([
             'name' => 'Emiliano',
             'email' => 'emiliano@test.com',
         ]);
+
+        // Riempio la tabella Types
+        $this->call(TypeSeeder::class);
+
+        // Creo i finti progetti
         \App\Models\Project::factory(10)->create();
     }
 }
