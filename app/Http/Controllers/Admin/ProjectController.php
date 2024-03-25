@@ -51,6 +51,7 @@ class ProjectController extends Controller
                 'title' => 'required|string|min:5|max:50|unique:projects',
                 'image' => 'nullable|image|mimes:png,jpg',
                 'content' => 'required|string',
+                'type_id' => 'nullable|exists:categories,id'
             ],
             [
                 'title.required' => 'Il titolo è obbligatorio',
@@ -59,7 +60,8 @@ class ProjectController extends Controller
                 'title.unique' => 'Non ci possono essere due titoli uguali',
                 'image.image' => 'Carica una immagine',
                 'image.mimes' => 'Si supportano solo le immagini con estensione .png o .jpg',
-                'content.required' => 'La descrizione è obbligatoria'
+                'content.required' => 'La descrizione è obbligatoria',
+                'type_id.exists' => 'Categoria non valida'
 
             ]
         );
@@ -106,6 +108,7 @@ class ProjectController extends Controller
                 'title' => ['required', 'string', 'min:5', 'max:50', Rule::unique('projects')->ignore($project->id)],
                 'image' => 'nullable|image|mimes:png,jpg',
                 'content' => 'required|string',
+                'type_id' => 'nullable|exists:categories,id'
             ],
             [
                 'title.required' => 'Il titolo è obbligatorio',
@@ -114,7 +117,8 @@ class ProjectController extends Controller
                 'title.unique' => 'Non ci possono essere due titoli uguali',
                 'image.image' => 'Carica una immagine',
                 'image.mimes' => 'Si supportano solo le immagini con estensione .png o .jpg',
-                'content.required' => 'La descrizione è obbligatoria'
+                'content.required' => 'La descrizione è obbligatoria',
+                'type_id' => 'Categoria non valida'
             ]
         );
         $data = $request->all();

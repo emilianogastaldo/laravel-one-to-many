@@ -43,7 +43,7 @@
         <div class="col-5">
             <div class="form-group">
                 <label for="type_id">Decidi la tipologia</label>
-                <select class="form-select my-2" id="type_id" name="type_id">
+                <select class="form-select my-2 @error('image') is-invalid @elseif(old('image', '')) is-valid @enderror" id="type_id" name="type_id">
                     <option value="">Seleziona</option>
                     @foreach ($types as $type)
                     <option value="{{$type->id}}" @if (old('type_id', $project->type?->id) == $type->id) selected @endif>
@@ -53,8 +53,6 @@
                   </select>
                 @error('type_id')
                 <div class="invalid-feedback">{{$message}}</div>
-                @else
-                <div class="form-text">Seleziona la categoria</div>
                 @enderror
             </div>
         </div>

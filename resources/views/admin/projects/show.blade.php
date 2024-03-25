@@ -5,7 +5,7 @@
 @section('content')
     <header class="mt-3">
         <h1>{{$project->title}}</h1>
-        @if ($project->type?->label)
+        @if ($project->type)
         <p>Tipologia: {{$project->type->label}}</p>            
         @endif
     </header>
