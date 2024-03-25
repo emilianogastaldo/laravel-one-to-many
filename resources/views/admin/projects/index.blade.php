@@ -42,7 +42,7 @@
               <th scope="row">{{$project->id}}</th>
               <td>{{$project->title}}</td>
               <td>{{$project->slug}}</td>
-              <td>{{$project->type->label ?  : 'Nessuno' }}</td>
+              <td><span class="badge" style="background-color: {{$project->type->color}}">{{$project->type->label ?  : 'Nessuno' }}</span></td>
               <td>{{$project->is_published ? 'Pubblicato' : 'Non pubblicato'}}</td>
               <td>{{$project->getFormatedDate('created_at')}}</td>
               <td>{{$project->getFormatedDate('updated_at', 'd-m-Y H:i:s')}}</td>
