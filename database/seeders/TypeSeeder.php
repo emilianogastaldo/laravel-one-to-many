@@ -15,7 +15,7 @@ class TypeSeeder extends Seeder
      */
     public function run(Generator $faker): void
     {
-        $types = ['FrontEnd', 'BackEnd', 'FullStack', 'Design', 'UI/UX', 'DataBase', null];
+        $types = ['FrontEnd', 'BackEnd', 'FullStack', 'Design', 'UI/UX', 'DataBase'];
         foreach ($types as $label) {
             $type = new Type();
             $type->label = $label;

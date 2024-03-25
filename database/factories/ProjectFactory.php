@@ -30,6 +30,7 @@ class ProjectFactory extends Factory
         $img_url = Storage::putFileAs('project_images', $image, "$slug.png");
         // creo l'array degli id dei tipi
         $type_ids = Type::pluck('id')->toArray();
+        $type_ids[] = null;
         return [
             'title' => $title,
             'slug' => $slug,

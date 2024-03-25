@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Type;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -36,7 +37,8 @@ class ProjectController extends Controller
     public function create()
     {
         $project = new Project();
-        return view('admin.projects.create', compact('project'));
+        $types = Type::select('label', 'id')->get();
+        return view('admin.projects.create', compact('project', 'types'));
     }
 
     /**
@@ -90,7 +92,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        $types = Type::select('label', 'id')->get();
+        return view('admin.projects.edit', compact('project', 'types'));
     }
 
     /**
@@ -112,7 +115,6 @@ class ProjectController extends Controller
                 'image.image' => 'Carica una immagine',
                 'image.mimes' => 'Si supportano solo le immagini con estensione .png o .jpg',
                 'content.required' => 'La descrizione è obbligatoria'
-
             ]
         );
         $data = $request->all();
