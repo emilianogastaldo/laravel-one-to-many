@@ -23,4 +23,10 @@ class Project extends Model
     {
         return asset('storage/' . $this->image);
     }
+
+    // Definisco la relazione molti ad uno
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
 }
